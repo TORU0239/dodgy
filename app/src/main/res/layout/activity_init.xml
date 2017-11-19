@@ -61,7 +61,6 @@
                 android:inputType="text"
                 android:padding="10dp"
                 android:hint="Please Enter Instagram ID"
-                android:text="toru_0239"
                 android:singleLine="true"/>
 
             <TextView
