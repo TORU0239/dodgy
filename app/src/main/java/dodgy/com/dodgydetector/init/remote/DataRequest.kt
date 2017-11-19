@@ -1,7 +1,6 @@
 package dodgy.com.dodgydetector.init.remote
 
-import dodgy.com.dodgydetector.init.model.InstagramModel
-import dodgy.com.dodgydetector.init.model.SalaryModel
+import dodgy.com.dodgydetector.init.model.*
 import dodgy.com.dodgydetector.remote.RemoteHelper
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -36,7 +35,7 @@ class DataRequest {
                 .subscribeOn(Schedulers.io())
     }
 
-    fun getDodgyUser(user:String):Observable<String>{
+    fun getDodgyUser(user:String):Observable<DodgeUserResultModel>{
         return RemoteHelper.initRetrofit("https://thermal-works-186407.appspot.com/api/")
                 .create(DodgeService::class.java)
                 .getDodgyUserData(user)
@@ -44,7 +43,7 @@ class DataRequest {
                 .subscribeOn(Schedulers.io())
     }
 
-    fun getDodgyVisionLabel(id:String):Observable<String>{
+    fun getDodgyVisionLabel(id:String):Observable<List<DodgeUserVisionLabelModel>>{
         return RemoteHelper.initRetrofit("https://thermal-works-186407.appspot.com/api/")
                 .create(DodgeService::class.java)
                 .getDodgyVisionLabel(id)
@@ -52,18 +51,26 @@ class DataRequest {
                 .subscribeOn(Schedulers.io())
     }
 
-    fun getDodgeVisonLandmark():Observable<String>{
+    fun getDodgeVisonLandmark(id:String):Observable<List<DodgeUserVisionModel>>{
         return RemoteHelper.initRetrofit("https://thermal-works-186407.appspot.com/api/")
                 .create(DodgeService::class.java)
-                .getDodgeVisonLandmark()
+                .getDodgeVisonLandmark(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
     }
 
-    fun getDodgeVisonLogo():Observable<String>{
+    fun getDodgeVisonLogo(id:String):Observable<List<DodgeUserVisionModel>>{
         return RemoteHelper.initRetrofit("https://thermal-works-186407.appspot.com/api/")
                 .create(DodgeService::class.java)
-                .getDodgeVisonLogo()
+                .getDodgeVisonLogo(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+    fun getDodgeVisonText(id:String):Observable<List<DodgeUserVisionModel>>{
+        return RemoteHelper.initRetrofit("https://thermal-works-186407.appspot.com/api/")
+                .create(DodgeService::class.java)
+                .getDodgeVisonText(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
     }
@@ -84,14 +91,17 @@ interface DodgeService{
     fun getNextRequestResult(@Url url:String):Observable<InstagramModel>
 
     @GET("check-dodgy-user")
-    fun getDodgyUserData(@Query("user") user:String):Observable<String>
+    fun getDodgyUserData(@Query("user") user:String):Observable<DodgeUserResultModel>
 
     @GET("check-dodgy-cloud-vision-label")
-    fun getDodgyVisionLabel(@Query("id")id:String):Observable<String>
+    fun getDodgyVisionLabel(@Query("id")id:String):Observable<List<DodgeUserVisionLabelModel>>
 
     @GET("check-dodgy-cloud-vision-landmark")
-    fun getDodgeVisonLandmark(@Query("id")id:String):Observable<String>
+    fun getDodgeVisonLandmark(@Query("id")id:String):Observable<List<DodgeUserVisionModel>>
 
     @GET("check-dodgy-cloud-vision-logo")
-    fun getDodgeVisonLogo(@Query("id")id:String):Observable<String>
+    fun getDodgeVisonLogo(@Query("id")id:String):Observable<List<DodgeUserVisionModel>>
+
+    @GET("check-dodgy-cloud-vision-text")
+    fun getDodgeVisonText(@Query("id")id:String):Observable<List<DodgeUserVisionModel>>
 }

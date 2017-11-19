@@ -13,3 +13,14 @@ data class InstagramMediaModel(val id:String,
                           @SerializedName("taken_at_timestamp") val takenTimeStamp:String,
                           @SerializedName("display_url") val displayUrl:String,
                           @SerializedName("thumbnail_src") val thumbnailUrl:String)
+
+data class DodgeUserResultModel(val id:String,
+                                val name:String,
+                                @SerializedName("is_dodgy")val isDodgy:Boolean)
+
+data class DodgeUserVisionLabelModel(val image:String,
+                                val requestId:String)
+
+data class DodgeUserVisionModel(val id:String,
+                                val labelAnnotations:String,
+                                @SerializedName("display_url")val displayUrl:String)

@@ -11,30 +11,60 @@ interface InitPresenter {
     fun onRequestMedia(id:String, count:Int)
     fun onRequestSalaryModel()
 
-    fun onRequestLabel()
+    fun onRequestLabel(id:String)
+    fun onRequestLandmark(id:String)
+    fun onRequestLogo(id:String)
+    fun onRequestText(id:String)
 
-    fun onRequestLandmark()
-    fun onRequestLogo()
-    fun onRequestText()
+    fun onRequestDodgyUser(instagram:String)
 
 //    https://thermal-works-186407.appspot.com/
 }
 
 class InitPresenterImp(private val view:InitView):InitPresenter{
-    override fun onRequestLabel() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRequestDodgyUser(instagram: String) {
+        DataRequest().getDodgyUser(instagram)
+                .subscribe({
+                    Log.w("TORU", "data: " + it)
+                }, {
+                    t: Throwable? -> t?.printStackTrace()
+                })
     }
 
-    override fun onRequestLandmark() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRequestLabel(id: String) {
+        DataRequest().getDodgyVisionLabel(id)
+                .subscribe({
+                    Log.w("TORU", "data: " + it)
+                }, {
+                    t: Throwable? -> t?.printStackTrace()
+                })
     }
 
-    override fun onRequestLogo() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRequestLandmark(id: String) {
+        DataRequest().getDodgeVisonLandmark(id)
+                .subscribe({
+                    Log.w("TORU", "data: " + it)
+                }, {
+                    t: Throwable? -> t?.printStackTrace()
+                })
     }
 
-    override fun onRequestText() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRequestLogo(id: String) {
+        DataRequest().getDodgeVisonLogo(id)
+                .subscribe({
+                    Log.w("TORU", "data: " + it)
+                }, {
+                    t: Throwable? -> t?.printStackTrace()
+                })
+    }
+
+    override fun onRequestText(id: String) {
+        DataRequest().getDodgeVisonText(id)
+                .subscribe({
+                    Log.w("TORU", "data: " + it)
+                }, {
+                    t: Throwable? -> t?.printStackTrace()
+                })
     }
 
     override fun onRequestSalaryModel() {

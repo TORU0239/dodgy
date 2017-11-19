@@ -67,13 +67,12 @@ class InitActivity : AppCompatActivity(), InitView {
 
             else {
                 length = 0
-                presenter.onRequestMedia(instagramET.editableText.toString(), 50)
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromInputMethod(instagramET.windowToken, 0)
                 imm.hideSoftInputFromInputMethod(jobPositionAutoText.windowToken, 0)
 
-                Log.w(TAG, "testz")
-
+                presenter.onRequestDodgyUser(instagramET.editableText.toString())
+//                presenter.onRequestMedia(instagramET.editableText.toString(), 50)
                 loading_layout.visibility = View.VISIBLE
             }
         }
