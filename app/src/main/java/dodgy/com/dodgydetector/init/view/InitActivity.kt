@@ -1,6 +1,7 @@
 package dodgy.com.dodgydetector.init.view
 
 import android.animation.Animator
+import android.animation.AnimatorInflater
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -13,12 +14,13 @@ import dodgy.com.dodgydetector.init.model.InstagramMediaModel
 import dodgy.com.dodgydetector.init.model.SalaryModel
 import dodgy.com.dodgydetector.init.presenter.InitPresenterImp
 import kotlinx.android.synthetic.main.activity_init.*
-import android.animation.AnimatorInflater
-import android.animation.AnimatorSet
-import android.util.Log
+import kotlinx.android.synthetic.main.modal_progress.*
 
 
 class InitActivity : AppCompatActivity(), InitView {
+    override fun onShowProgess(percent: String) {
+        percentage.text = percent
+    }
 
     private val presenter:InitPresenterImp by lazy{
         InitPresenterImp(this)

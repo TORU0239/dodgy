@@ -26,6 +26,8 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
         DataRequest().getDodgyUser(instagram)
                 .subscribe({
                     Log.w("TORU", "data: " + it)
+                    view.onShowProgess("20")
+                    onRequestLabel(it.id)
                 }, {
                     t: Throwable? -> t?.printStackTrace()
                 })
@@ -35,6 +37,8 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
         DataRequest().getDodgyVisionLabel(id)
                 .subscribe({
                     Log.w("TORU", "data: " + it)
+                    view.onShowProgess("40")
+                    onRequestLandmark(id)
                 }, {
                     t: Throwable? -> t?.printStackTrace()
                 })
@@ -44,6 +48,8 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
         DataRequest().getDodgeVisonLandmark(id)
                 .subscribe({
                     Log.w("TORU", "data: " + it)
+                    view.onShowProgess("60")
+                    onRequestLogo(id)
                 }, {
                     t: Throwable? -> t?.printStackTrace()
                 })
@@ -52,7 +58,8 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
     override fun onRequestLogo(id: String) {
         DataRequest().getDodgeVisonLogo(id)
                 .subscribe({
-                    Log.w("TORU", "data: " + it)
+                    view.onShowProgess("80")
+                    onRequestText(id)
                 }, {
                     t: Throwable? -> t?.printStackTrace()
                 })
@@ -62,6 +69,8 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
         DataRequest().getDodgeVisonText(id)
                 .subscribe({
                     Log.w("TORU", "data: " + it)
+                    view.onShowProgess("100")
+                    view.onShowToast("SUCCESS!!! HE IS DODGY!")
                 }, {
                     t: Throwable? -> t?.printStackTrace()
                 })

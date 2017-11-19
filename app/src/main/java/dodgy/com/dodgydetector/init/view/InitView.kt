@@ -12,5 +12,7 @@ interface InitView {
     fun onShowDialog()
     fun onHideDialog()
 
+    fun onShowProgess(percent:String)
+
     fun onUpdateSalaryInformation(salaryList:List<SalaryModel>)
 }

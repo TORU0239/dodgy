@@ -19,9 +19,9 @@ class RemoteHelper {
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
             val client = OkHttpClient.Builder()
-                    .connectTimeout(5000, TimeUnit.MILLISECONDS)
-                    .readTimeout(5000, TimeUnit.MILLISECONDS)
-                    .writeTimeout(5000, TimeUnit.MILLISECONDS)
+                    .connectTimeout(15000, TimeUnit.MILLISECONDS)
+                    .readTimeout(15000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(15000, TimeUnit.MILLISECONDS)
                     .addInterceptor(loggingInterceptor)
                     .build()
 
