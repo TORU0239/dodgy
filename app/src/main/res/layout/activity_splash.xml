@@ -7,9 +7,12 @@
     tools:context="dodgy.com.dodgydetector.splash.SplashActivity">
 
     <ImageView
+        android:id="@+id/splash_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/project_dodge_index"/>
+        android:src="@drawable/project_dodge_index"
+        android:transitionName="dodgy_transition"
+        tools:ignore="UnusedAttribute"/>
 
 </RelativeLayout>

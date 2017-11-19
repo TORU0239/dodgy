@@ -18,7 +18,8 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/finished_report"/>
+        android:text="@string/finished_report"
+        android:textSize="20sp"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"

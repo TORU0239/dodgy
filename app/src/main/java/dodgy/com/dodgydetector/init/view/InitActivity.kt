@@ -1,5 +1,6 @@
 package dodgy.com.dodgydetector.init.view
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -41,7 +42,7 @@ class InitActivity : AppCompatActivity(), InitView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_init)
-
+        setResult(Activity.RESULT_OK)
         reportingBtn.setOnClickListener {
             if(instagramET.editableText.toString().isEmpty()){
                 Toast.makeText(InitActivity@this, "No Instagram ID.", Toast.LENGTH_SHORT).show()

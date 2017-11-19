@@ -35,7 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
-                android:src="@drawable/project_dodge_index"/>
+                android:src="@drawable/project_dodge_index"
+                android:transitionName="dodgy_transition"
+                tools:ignore="UnusedAttribute"/>
 
             <TextView
                 android:layout_width="wrap_content"
