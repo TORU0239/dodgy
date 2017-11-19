@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#D32F2F</color>
+    <color name="colorAccent">#448AFF</color>
+
+    <color name="splash_start">#5e707b</color>
+    <color name="splash_end">#303d45</color>
+
+    <color name="orange_color">#e83e33</color>
+    <color name="toolbar_color">#87939a</color>
+
+    <color name="background_color">#ededed</color>
+</resources>
