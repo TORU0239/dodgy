@@ -19,6 +19,9 @@ import kotlinx.android.synthetic.main.modal_progress.*
 
 class InitActivity : AppCompatActivity(), InitView {
     override fun onShowProgess(percent: String) {
+        if(percent == "100"){
+            report_btn.visibility = View.VISIBLE
+        }
         percentage.text = percent
     }
 
@@ -38,7 +41,6 @@ class InitActivity : AppCompatActivity(), InitView {
 
     lateinit var outAnimator: Animator
     lateinit var inAnimator: Animator
-    var backisvisible = false
 
     private fun loadingAnimation(){
         outAnimator = AnimatorInflater.loadAnimator(this, R.animator.out_animation)
@@ -74,7 +76,6 @@ class InitActivity : AppCompatActivity(), InitView {
                 imm.hideSoftInputFromInputMethod(jobPositionAutoText.windowToken, 0)
 
                 presenter.onRequestDodgyUser(instagramET.editableText.toString())
-//                presenter.onRequestMedia(instagramET.editableText.toString(), 50)
                 loading_layout.visibility = View.VISIBLE
             }
         }
