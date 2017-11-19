@@ -1,8 +1,10 @@
 package dodgy.com.dodgydetector.init.view
 
+import android.animation.Animator
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -11,6 +13,10 @@ import dodgy.com.dodgydetector.init.model.InstagramMediaModel
 import dodgy.com.dodgydetector.init.model.SalaryModel
 import dodgy.com.dodgydetector.init.presenter.InitPresenterImp
 import kotlinx.android.synthetic.main.activity_init.*
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import android.util.Log
+
 
 class InitActivity : AppCompatActivity(), InitView {
 
@@ -28,9 +34,27 @@ class InitActivity : AppCompatActivity(), InitView {
         }
     }
 
+    lateinit var outAnimator: Animator
+    lateinit var inAnimator: Animator
+    var backisvisible = false
+
+    private fun loadingAnimation(){
+        outAnimator = AnimatorInflater.loadAnimator(this, R.animator.out_animation)
+        inAnimator = AnimatorInflater.loadAnimator(this, R.animator.in_animation)
+    }
+
+    private fun changeCameraDistance(){
+        val distance = 8000
+        val scale = resources.displayMetrics.density * distance
+        layout_report.cameraDistance = scale
+//        loading_layout.cameraDistance = scale
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_init)
+        loadingAnimation()
+        changeCameraDistance()
 
         reportingBtn.setOnClickListener {
             if(instagramET.editableText.toString().isEmpty()){
@@ -47,6 +71,10 @@ class InitActivity : AppCompatActivity(), InitView {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromInputMethod(instagramET.windowToken, 0)
                 imm.hideSoftInputFromInputMethod(jobPositionAutoText.windowToken, 0)
+
+                Log.w(TAG, "testz")
+
+                loading_layout.visibility = View.VISIBLE
             }
         }
 

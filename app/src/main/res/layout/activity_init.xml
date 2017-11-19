@@ -14,93 +14,104 @@
         app:titleTextColor="@android:color/white"
         android:background="@color/toolbar_color"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        android:background="@drawable/rect_for_input"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true" >
+        android:layout_below="@id/toolbar">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_gravity="center"
-            android:src="@drawable/project_dodge_index"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13.3dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:text="Instagram ID" />
-
-        <EditText
-            android:id="@+id/instagramET"
+        <LinearLayout
+            android:id="@+id/layout_report"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13.3dp"
-            android:layout_marginRight="13.3dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edittext"
-            android:inputType="text"
-            android:padding="10dp"
-            android:hint="Please Enter Instagram ID"
-            android:singleLine="true"/>
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="vertical"
+            android:background="@drawable/rect_for_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="13.3dp"
-            android:layout_marginTop="20dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:text="Job Title" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/project_dodge_index"/>
 
-        <AutoCompleteTextView
-            android:id="@+id/jobPositionAutoText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="13.3dp"
-            android:layout_marginRight="13.3dp"
-            android:padding="10dp"
-            android:inputType="text"
-            android:hint="Please Enter Your Job"
-            android:background="@drawable/edittext"
-            android:singleLine="true"
-            android:ems="100"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13.3dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="Instagram ID" />
 
-        <TextView
-            android:id="@+id/reportingBtn"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="6.3dp"
-            android:layout_marginRight="6.3dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:padding="14dp"
-            android:gravity="center"
-            android:singleLine="true"
-            android:background="@drawable/rec_button_selector"
-            android:textColor="@android:color/white"
-            android:text="Go Report!!"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/instagramET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13.3dp"
+                android:layout_marginRight="13.3dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edittext"
+                android:inputType="text"
+                android:padding="10dp"
+                android:hint="Please Enter Instagram ID"
+                android:singleLine="true"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcvInstaMedia"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13.3dp"
+                android:layout_marginTop="20dp"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="Job Title" />
 
+            <AutoCompleteTextView
+                android:id="@+id/jobPositionAutoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="13.3dp"
+                android:layout_marginRight="13.3dp"
+                android:padding="10dp"
+                android:inputType="text"
+                android:hint="Please Enter Your Job"
+                android:background="@drawable/edittext"
+                android:singleLine="true"
+                android:ems="100"/>
+
+            <TextView
+                android:id="@+id/reportingBtn"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6.3dp"
+                android:layout_marginRight="6.3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:background="@drawable/rec_button_selector"
+                android:textColor="@android:color/white"
+                android:text="Go Report!!"/>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/loading_layout"
+            layout="@layout/modal_progress"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/rcvInstaMedia"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:visibility="gone"/>-->]
 </RelativeLayout>

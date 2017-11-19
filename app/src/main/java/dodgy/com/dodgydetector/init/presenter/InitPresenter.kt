@@ -1,7 +1,6 @@
 package dodgy.com.dodgydetector.init.presenter
 
 import android.util.Log
-import android.widget.EditText
 import dodgy.com.dodgydetector.init.remote.DataRequest
 import dodgy.com.dodgydetector.init.view.InitView
 
@@ -11,9 +10,33 @@ import dodgy.com.dodgydetector.init.view.InitView
 interface InitPresenter {
     fun onRequestMedia(id:String, count:Int)
     fun onRequestSalaryModel()
+
+    fun onRequestLabel()
+
+    fun onRequestLandmark()
+    fun onRequestLogo()
+    fun onRequestText()
+
+//    https://thermal-works-186407.appspot.com/
 }
 
 class InitPresenterImp(private val view:InitView):InitPresenter{
+    override fun onRequestLabel() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRequestLandmark() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRequestLogo() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onRequestText() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onRequestSalaryModel() {
         DataRequest().salaryDataRequest()
                 .doOnSubscribe {
@@ -61,4 +84,6 @@ class InitPresenterImp(private val view:InitView):InitPresenter{
                     t->t.printStackTrace()
                 })
     }
+
+
 }
