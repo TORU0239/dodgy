@@ -107,6 +107,11 @@
             android:id="@+id/loading_layout"
             layout="@layout/modal_progress"
             android:visibility="gone"/>
+
+        <include
+            android:id="@+id/finish_layout"
+            layout="@layout/finish_dialog"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 

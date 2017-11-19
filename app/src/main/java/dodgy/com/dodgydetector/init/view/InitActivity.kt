@@ -1,7 +1,5 @@
 package dodgy.com.dodgydetector.init.view
 
-import android.animation.Animator
-import android.animation.AnimatorInflater
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +12,7 @@ import dodgy.com.dodgydetector.init.model.InstagramMediaModel
 import dodgy.com.dodgydetector.init.model.SalaryModel
 import dodgy.com.dodgydetector.init.presenter.InitPresenterImp
 import kotlinx.android.synthetic.main.activity_init.*
+import kotlinx.android.synthetic.main.finish_dialog.*
 import kotlinx.android.synthetic.main.modal_progress.*
 
 
@@ -39,36 +38,17 @@ class InitActivity : AppCompatActivity(), InitView {
         }
     }
 
-    lateinit var outAnimator: Animator
-    lateinit var inAnimator: Animator
-
-    private fun loadingAnimation(){
-        outAnimator = AnimatorInflater.loadAnimator(this, R.animator.out_animation)
-        inAnimator = AnimatorInflater.loadAnimator(this, R.animator.in_animation)
-    }
-
-    private fun changeCameraDistance(){
-        val distance = 8000
-        val scale = resources.displayMetrics.density * distance
-        layout_report.cameraDistance = scale
-//        loading_layout.cameraDistance = scale
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_init)
-        loadingAnimation()
-        changeCameraDistance()
 
         reportingBtn.setOnClickListener {
             if(instagramET.editableText.toString().isEmpty()){
                 Toast.makeText(InitActivity@this, "No Instagram ID.", Toast.LENGTH_SHORT).show()
             }
-
             else if(jobPositionAutoText.editableText.toString().isEmpty()){
                 Toast.makeText(InitActivity@this, "No Job Position.", Toast.LENGTH_SHORT).show()
             }
-
             else {
                 length = 0
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -78,6 +58,18 @@ class InitActivity : AppCompatActivity(), InitView {
                 presenter.onRequestDodgyUser(instagramET.editableText.toString())
                 loading_layout.visibility = View.VISIBLE
             }
+        }
+
+        report_btn.setOnClickListener {
+            layout_report.visibility = View.GONE
+            loading_layout.visibility = View.GONE
+            finish_layout.visibility = View.VISIBLE
+        }
+
+        finish_btn.setOnClickListener{
+            layout_report.visibility = View.VISIBLE
+            loading_layout.visibility = View.GONE
+            finish_layout.visibility = View.GONE
         }
 
         presenter.onRequestSalaryModel()

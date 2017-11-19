@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">DodgeIndex</string>
     <string name="toolbarName">Dodge Index</string>
+
+    <string name="finished_report">Report Received.\n\nThank you for reporting.</string>
 </resources>
